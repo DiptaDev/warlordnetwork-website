@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Warlord Network | Store</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/logo.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      color: white;
+      margin: 0;
+    }
+
+    .main-container {
+      margin: 40px auto;
+      max-width: 600px;
+      background-color: #1c1c1c;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .store-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #d02a2a;
+    }
+
+    .store-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .discord-button {
+      display: inline-block;
+      background-color: #f54141;
+      color: white;
+      font-weight: 600;
+      padding: 13px;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .discord-button:hover {
+      background-color: #ca2424;
+    }
+
+    .back-button {
+      margin: 2rem auto;
+      display: inline-block;
+      color: #d02a2a;
+      text-decoration: none;
+      font-weight: 600;
+      background-color: #1c1c1c;
+      padding: 13px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #2a2a2a;
+    }
+
+    #foot {
+      color: grey;
+      background: #1e1e1e;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    #foot .copyright {
+      font-size: 11px;
+      color: #797c89;
+    }
+
+    #foot .copyright strong {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: #2c2f33;
+      margin: 10% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .modal-btn {
+      margin: 0.5rem;
+      padding: 0.75rem 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-yes {
+      background-color: #f54141;
+      color: white;
+    }
+
+    .btn-yes:hover {
+      background-color: #ca2424;
+    }
+
+    .btn-no {
+      background-color: #555;
+      color: white;
+    }
+
+    .btn-no:hover {
+      background-color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        margin: 20px;
+        padding: 1.5rem;
+      }
+
+      .store-title {
+        font-size: 1.5rem;
+      }
+
+      .description {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <h1 class="store-title">Warlord Store</h1>
+    <img src="../stal.png" alt="Store Banner" class="store-image">
+    <p class="description">
+      To make a purchase in the <strong>Warlord Store</strong>, please click the button below.<br><br>
+      You must be a member of our Discord server first.
+    </p>
+    <button class="discord-button" onclick="openModal()">Open Store on Discord</button>
+  </div>
+
+  <div style="text-align: center;">
+    <a href=".." class="back-button">← Back to Home</a>
+  </div>
+
+  <div id="foot">
+    <div class="copyright">
+      <div><strong>WarLord Network</strong></div>
+      <small>Not associated with Mojang or Microsoft</small><br>
+      <div class="copyright-links">
+        <a href="javascript:void(0)" onclick="togglePopup()">SUPPORT</a> |
+        <a href="./tos/" target="_blank">TERMS OF SERVICE</a> |
+        <a href="https://saweria.co/Dipta14" target="_blank">DONATE</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="storeModal" class="modal">
+    <div class="modal-content">
+      <h2>Have you joined our Discord server?</h2>
+      <button class="modal-btn btn-yes" onclick="goToStore()">Yes, I’ve joined</button>
+      <button class="modal-btn btn-no" onclick="goToInvite()">No, take me there</button>
+    </div>
+  </div>
+
+  <script>
+    function openModal() {
+      document.getElementById('storeModal').style.display = 'block';
+    }
+
+    function goToStore() {
+      window.open('https://discord.com/channels/1308350555583680613/1390550689717026867', '_blank');
+    }
+
+    function goToInvite() {
+      window.open('../discord', '_blank');
+    }
+
+    window.onclick = function (event) {
+      const modal = document.getElementById('storeModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

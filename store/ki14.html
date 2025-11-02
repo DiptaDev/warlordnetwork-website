@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Warlord Network | Store</title>
+  <link rel="shortcut icon" href="/logo.jpg">
+  <link rel="stylesheet" href="skin.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      color: white;
+      margin: 0;
+
+
+    }
+
+    .main-container {
+      margin-top: 40px;
+      max-width: 600px;
+      background-color: #1c1c1c;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .store-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #d02a2a
+    }
+
+    .store-image {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .discord-button {
+      display: inline-block;
+      background-color: #f54141;
+      color: white;
+      font-weight: 600;
+      padding: 13px;
+      border-radius: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .discord-button:hover {
+      background-color: #ca2424;
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .modal-content {
+      background-color: #2c2f33;
+      margin: 15% auto;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-content h2 {
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .modal-btn {
+      margin: 0.5rem;
+      padding: 0.75rem 1.2rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-yes {
+      background-color: #f54141;
+      color: white;
+    }
+
+    .btn-yes:hover {
+      background-color: #ca2424;
+    }
+
+    .btn-no {
+      background-color: #555;
+      color: white;
+    }
+
+    .btn-no:hover {
+      background-color: #444;
+    }
+
+    .back-button {
+      margin-top: 33px;
+      margin-bottom: 140px;
+      display: inline-block;
+      color: #d02a2a;
+      text-decoration: none;
+      font-weight: 600;
+      background-color: #1c1c1c;
+      padding: 13px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+
+    }
+
+    .back-button:hover {
+      background-color: #2a2a2a;
+      color: #d02a2a;
+    }
+
+    small {
+      color: #acabab;
+    }
+
+
+
+    .support-button {
+      background-color: #222;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.95);
+      background-color: #1c1c1c;
+      padding: 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      z-index: 999;
+      width: 90%;
+      max-width: 400px;
+      font-family: Arial, sans-serif;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      pointer-events: none;
+    }
+
+    .popup.show {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      pointer-events: auto;
+    }
+
+    .popup-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .popup-header h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      color: white;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #444;
+      width: calc(100% + 40px);
+      margin-left: -20px;
+      margin-bottom: 18px;
+      margin-top: 10px;
+    }
+
+    .popup p {
+      margin: 8px 0;
+    }
+
+    /* SUPPORT STYLE END */
+  </style>
+</head>
+
+<body>
+  <center>
+    <div class="main-container">
+      <h1 class="store-title">Warlord Store</h1>
+      <img src="../stal.png" alt="Store Banner" class="store-image" oncontextmenu="return false">
+      <p class="description">
+        To make a purchase in the <strong>Warlord Store</strong>, please click the button below.<br><br>
+        You must be a member of our Discord server first. <br>
+        <small>(back to this pange after you joined the Discord server and click "Yes, I've Joined")</small>
+      </p>
+      <button class="discord-button" onclick="openModal()">Open Store on Discord</button>
+    </div>
+  </center>
+  <br>
+
+  <div style="text-align: center;"><a href=".." class="back-button">← Back to Home</a></div>
+
+  <div class="bottom-content">
+    <div id="foot">
+      <div class="container">
+        <section class="copyright">
+          <div class="copyright-text">
+            <div class="copyright-icon"><img style="max-width: 100%;" src="../logo.jpg" oncontextmenu="return false"></div>
+            <div class="copyright-text">
+              <span><strong>WarLord Network</strong></span>
+            </div>
+          </div>
+          <small>Not associated with Mojang or Microsoft</small>
+          <div class="copyright-links">
+            <a id="supportBtn" class="support-button" onclick="togglePopup()">SUPPORT</a>
+            <a href="../tos/" target="_blank">TERMS OF SERVICE</a>
+            <a href="https://saweria.co/Dipta14" target="_blank">DONATE</a>
+          </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Popup Start -->
+  <div class="popup" id="supportPopup">
+    <div class="popup-header">
+      <h3 class="support-header">Support</h3>
+      <button class="close-btn" onclick="togglePopup()">✕</button>
+    </div>
+    <div class="divider"></div>
+    <p>📧 Email: sangsuratma@gmail.com (may slow)</p>
+    <p>📞 WhatsApp: +62 823 4037 9194</p>
+    <p>💬 Discord: dipta14</p>
+  </div>
+  <!-- Popup END -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="/templates/209/js/bootstrap.min.js"></script>
+  <script src="/templates/209/js/skin.min.js"></script>
+  <script src="/templates/209/js/site.js"></script>
+
+  <!-- Modal -->
+  <div id="storeModal" class="modal">
+    <div class="modal-content">
+      <h2>Have you joined our Discord server?</h2>
+      <button class="modal-btn btn-yes" onclick="goToStore()">Yes, I’ve joined</button>
+      <button class="modal-btn btn-no" onclick="goToInvite()">No, take me there</button>
+    </div>
+  </div>
+
+  <!-- POP UP SUPPORT SYSTEM START -->
+  <script>
+    function togglePopup() {
+      const popup = document.getElementById("supportPopup");
+      popup.classList.toggle("show");
+    }
+
+    document.addEventListener("click", function (event) {
+      const popup = document.getElementById("supportPopup");
+      const button = document.getElementById("supportBtn");
+
+      if (
+        popup.classList.contains("show") &&
+        !popup.contains(event.target) &&
+        !button.contains(event.target)
+      ) {
+        popup.classList.remove("show");
+      }
+    });
+  </script>
+  <!-- POP UP SUPPORT SYSTEM END! -->
+  <script>
+    function openModal() {
+      document.getElementById('storeModal').style.display = 'block';
+    }
+
+    function goToStore() {
+      window.open('https://discord.com/channels/1308350555583680613/1390550689717026867', '_blank');
+    }
+
+    function goToInvite() {
+      // Ganti link ini dengan invite Discord server kamu
+      window.open('../discord', '_blank');
+    }
+
+    // Close modal when clicking outside it
+    window.onclick = function (event) {
+      const modal = document.getElementById('storeModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+
+</html>

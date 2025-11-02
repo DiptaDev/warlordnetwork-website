@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Support Popup</title>
+    <style>
+        body {
+            background-color: #111;
+        }
+
+        .support-button {
+            padding: 10px 20px;
+            background-color: #222;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-top: 50px;
+        }
+
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.95);
+            background-color: #1c1c1c;
+            padding: 20px;
+            padding-right: 153px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            width: 90%;
+            max-width: 400px;
+            font-family: Arial, sans-serif;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+
+        .popup.show {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .popup-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #444;
+            width: calc(100% + 173px);
+            /* 153 (kanan) + 20 (kiri) */
+            margin-left: -20px;
+            margin-right: -153px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .popup p {
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Tombol Support -->
+    <center><button id="supportBtn" class="support-button" onclick="togglePopup()">Support</button></center>
+
+    <!-- Popup -->
+    <div class="popup" id="supportPopup">
+        <div class="popup-header">
+            <h3 class="support-header">Support</h3>
+            <button class="close-btn" onclick="togglePopup()">✕</button>
+        </div>
+        <div class="divider"></div>
+        <p>📧 Email: sangsuratma@gmail.com</p>
+        <p>📞 WhatsApp: +62 823 4037 9194</p>
+        <p>💬 Discord: dipta14</p>
+    </div>
+
+    <script>
+        function togglePopup() {
+            const popup = document.getElementById("supportPopup");
+            popup.classList.toggle("show");
+        }
+
+        document.addEventListener("click", function (event) {
+            const popup = document.getElementById("supportPopup");
+            const button = document.getElementById("supportBtn");
+
+            if (
+                popup.classList.contains("show") &&
+                !popup.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+                popup.classList.remove("show");
+            }
+        });
+    </script>
+</body>
+</html>
